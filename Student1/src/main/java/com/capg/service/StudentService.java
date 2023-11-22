@@ -8,8 +8,6 @@ import com.capg.model.Student;
 
 @Service
 public interface StudentService {
-
-	Student getByName(String name);
 	 
 	void update(Student student);
  

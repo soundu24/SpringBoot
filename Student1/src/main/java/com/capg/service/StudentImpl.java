@@ -16,11 +16,6 @@ public class StudentImpl implements StudentService {
 	StudentRepo repo;
  
 	@Override
-	public Student getByName(String name) {
-		return repo.findByName(name);
-	}
- 
-	@Override
 	public List<Student> getAllStudents() {
 		List<Student> students = new ArrayList<Student>();
 		repo.findAll().forEach(student1 -> students.add(student1));
