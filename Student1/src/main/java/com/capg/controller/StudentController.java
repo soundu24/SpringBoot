@@ -31,12 +31,6 @@ private static final Logger log = LoggerFactory.getLogger(StudentController.clas
 		return serv.getAllStudents();
 	}
  
-	@GetMapping("/student/{name}")
-	private Student getStudent(@PathVariable("name") String name) {
-		log.info("Get data of particular student");
-		return serv.getByName(name);
-	}
- 
 	@PutMapping("/students/{name}")
 	private Student update(@RequestBody Student student) {
 		serv.update(student);
@@ -45,9 +39,10 @@ private static final Logger log = LoggerFactory.getLogger(StudentController.clas
 	}
  
 	@DeleteMapping("/delete/{name}")
-	private void delete(@PathVariable("name") String name) {
+	private String delete(@PathVariable("name") String name) {
 		log.info("Delete Data");
 		serv.delete(name);
+		return "Deleted";
 	}
  
 	@PostMapping("/addStudent")
