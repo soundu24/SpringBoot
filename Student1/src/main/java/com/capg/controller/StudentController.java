@@ -42,7 +42,7 @@ private static final Logger log = LoggerFactory.getLogger(StudentController.clas
 	private String delete(@PathVariable("name") String name) {
 		log.info("Delete Data");
 		serv.delete(name);
-		return "Deleted!!!";
+		return "Deleted!!";
 	}
  
 	@PostMapping("/addStudent")
