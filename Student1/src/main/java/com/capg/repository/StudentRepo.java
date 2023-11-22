@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 import com.capg.model.Student;
 
 @Repository
-public interface StudentRepo extends MongoRepository<Student, String>{
-
+public interface StudentRepo extends MongoRepository<Student, String> {
+ 
+	Student findByName(String name);
+ 
+	Student deleteByName(String name);
+ 
 }

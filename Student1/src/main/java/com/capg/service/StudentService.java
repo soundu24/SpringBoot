@@ -9,8 +9,15 @@ import com.capg.model.Student;
 @Service
 public interface StudentService {
 
-	public Student addstudent(Student student);
-
-	public List<Student> allstudent();
+	Student getByName(String name);
+	 
+	void update(Student student);
+ 
+	List<Student> getAllStudents();
+ 
+	void delete(String name);
+ 
+	Student save(Student student);
+ 
 	
 }
