@@ -33,7 +33,7 @@ public class StudentController {
 	public ResponseEntity<List<Student>> getStudents(){
 		List<Student> s = new ArrayList<Student>();
 		s.add(new Student(1,"Soundu","S"));
-		s.add(new Student(2,"Raki","R"));
+		s.add(new Student(2,"Rakesh","R"));
 		s.add(new Student(3,"Sam","s"));
 		return ResponseEntity.ok(s);
 	}
