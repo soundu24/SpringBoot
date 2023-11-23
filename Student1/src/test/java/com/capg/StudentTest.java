@@ -1,17 +1,19 @@
-package com.capg.model;
+package com.capg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capg.model.Student;
 
 @SpringBootTest
 public class StudentTest {
 
 	private Student student;
 	 
-	@Before
+	@BeforeAll
 	public void setUp() {
 		student = new Student();
 	}
