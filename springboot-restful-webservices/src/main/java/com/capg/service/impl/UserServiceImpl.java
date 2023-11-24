@@ -50,8 +50,6 @@ public class UserServiceImpl implements UserService {
 //		UserDto savedUserDto = UserMapper.mapToUserDto(savedUser);
 
 //		UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
-
-//		UserDto savedUserDto = AutoUserMapper.MAPPER.mapToUserDto(savedUser);
 		
 		UserDto savedUserDto = AutoUserMapper.MAPPER.mapToUserDto(savedUser);
 
@@ -64,8 +62,8 @@ public class UserServiceImpl implements UserService {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 //		return UserMapper.mapToUserDto(user);
-		return modelMapper.map(user, UserDto.class);
-//		return AutoUserMapper.MAPPER.mapToUserDto(user);
+//		return modelMapper.map(user, UserDto.class);
+		return AutoUserMapper.MAPPER.mapToUserDto(user);
 	}
 
 	@Override
