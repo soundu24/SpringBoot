@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.capg.departmentservice.dto.DepartmentDto;
 import com.capg.departmentservice.entity.Department;
+import com.capg.departmentservice.mapper.AutoDepartmentMapper;
 import com.capg.departmentservice.mapper.DepartmentMapper;
 import com.capg.departmentservice.repository.DepartmentRepository;
 import com.capg.departmentservice.service.DepartmentService;
@@ -31,7 +32,9 @@ public class DepartmentServiceImpl implements DepartmentService{
 //				);
 //		Department department = DepartmentMapper.mapToDepartment(departmentDto);
 		
-		Department department = modelMapper.map(departmentDto, Department.class);
+//		Department department = modelMapper.map(departmentDto, Department.class);
+		
+		Department department = AutoDepartmentMapper.mapper.mapToDepartment(departmentDto);
 		
 		Department savedDepartment = departmentRepository.save(department);
 		
@@ -45,7 +48,9 @@ public class DepartmentServiceImpl implements DepartmentService{
 
 //		DepartmentDto savedDepartmentDto = DepartmentMapper.mapToDepartmentDto(savedDepartment);
 		
-		DepartmentDto savedDepartmentDto = modelMapper.map(savedDepartment, DepartmentDto.class);
+//		DepartmentDto savedDepartmentDto = modelMapper.map(savedDepartment, DepartmentDto.class);
+		
+		DepartmentDto savedDepartmentDto = AutoDepartmentMapper.mapper.mapToDepartmentDto(savedDepartment);
 		
 		return savedDepartmentDto;
 		
@@ -68,6 +73,8 @@ public class DepartmentServiceImpl implements DepartmentService{
 		
 //		return DepartmentMapper.mapToDepartmentDto(department);
 		
-		return modelMapper.map(department, DepartmentDto.class);
+//		return modelMapper.map(department, DepartmentDto.class);
+		
+		return AutoDepartmentMapper.mapper.mapToDepartmentDto(department);
 	}
 }

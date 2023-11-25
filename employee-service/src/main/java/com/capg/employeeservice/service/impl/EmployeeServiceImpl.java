@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.capg.employeeservice.dto.EmployeeDto;
 import com.capg.employeeservice.entity.Employee;
+import com.capg.employeeservice.mapper.AutoEmployeeMapper;
 import com.capg.employeeservice.mapper.EmployeeMapper;
 import com.capg.employeeservice.repository.EmployeeRepository;
 import com.capg.employeeservice.services.EmployeeService;
@@ -31,8 +32,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 //				);
 //		Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
 		
-		Employee employee = modelMapper.map(employeeDto, Employee.class);
-		Employee savedEmployee = employeeRepository.save(employee);
+//		Employee employee = modelMapper.map(employeeDto, Employee.class);
+
+		//	Employee savedEmployee = employeeRepository.save(employee);
+		
+		Employee savedEmployee = AutoEmployeeMapper.mapper.mapToEmployee(employeeDto);
 		
 		//convert JPA Entity to Dto
 		
@@ -45,7 +49,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 //		EmployeeDto savedEmployeeDto = EmployeeMapper.mapToEmployeeDto(savedEmployee);
 		
-		EmployeeDto savedEmployeeDto = modelMapper.map(savedEmployee, EmployeeDto.class);
+//		EmployeeDto savedEmployeeDto = modelMapper.map(savedEmployee, EmployeeDto.class);
+		
+		EmployeeDto savedEmployeeDto = AutoEmployeeMapper.mapper.mapToEmployeeDto(savedEmployee);
 		return savedEmployeeDto;
 	}
 
@@ -64,7 +70,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 //		return EmployeeMapper.mapToEmployeeDto(employee);
 		
-		return modelMapper.map(employee, EmployeeDto.class);
+//		return modelMapper.map(employee, EmployeeDto.class);
+		
+		return AutoEmployeeMapper.mapper.mapToEmployeeDto(employee);
 	}
 
 }
