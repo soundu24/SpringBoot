@@ -39,9 +39,9 @@ public class UserServiceImpl implements UserService {
 		if(optionalUser.isPresent()) {
 			throw new EmailAlreadyExistsException("Email Already Exists for User");
 		}
-//		User user = modelMapper.map(userDto, User.class);
+		User user = modelMapper.map(userDto, User.class);
 		
-		User user = AutoUserMapper.MAPPER.mapToUser(userDto);
+//		User user = AutoUserMapper.MAPPER.mapToUser(userDto);
 		
 		User savedUser = userRepository.save(user);
 
@@ -49,9 +49,9 @@ public class UserServiceImpl implements UserService {
 
 //		UserDto savedUserDto = UserMapper.mapToUserDto(savedUser);
 
-//		UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
+		UserDto savedUserDto = modelMapper.map(savedUser, UserDto.class);
 		
-		UserDto savedUserDto = AutoUserMapper.MAPPER.mapToUserDto(savedUser);
+//		UserDto savedUserDto = AutoUserMapper.MAPPER.mapToUserDto(savedUser);
 
 		return savedUserDto;
 
