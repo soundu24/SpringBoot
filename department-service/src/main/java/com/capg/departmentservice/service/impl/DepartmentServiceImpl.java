@@ -24,33 +24,33 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public DepartmentDto saveDepartment(DepartmentDto departmentDto) {
 		
 //		Convert department dto to department JPA Entity
-//		Department department = new Department(
-//				departmentDto.getId(),
-//				departmentDto.getDepartmentName(),
-//				departmentDto.getDepartmentDescription(),
-//				departmentDto.getDepartmentCode()
-//				);
+		Department department = new Department(
+				departmentDto.getId(),
+				departmentDto.getDepartmentName(),
+				departmentDto.getDepartmentDescription(),
+				departmentDto.getDepartmentCode()
+				);
 //		Department department = DepartmentMapper.mapToDepartment(departmentDto);
 		
 //		Department department = modelMapper.map(departmentDto, Department.class);
 		
-		Department department = AutoDepartmentMapper.mapper.mapToDepartment(departmentDto);
+//		Department department = AutoDepartmentMapper.mapper.mapToDepartment(departmentDto);
 		
 		Department savedDepartment = departmentRepository.save(department);
 		
 		
-//		DepartmentDto savedDepartmentDto = new DepartmentDto(
-//				savedDepartment.getId(),
-//				savedDepartment.getDepartmentName(),
-//				savedDepartment.getDepartmentDescription(),
-//				savedDepartment.getDepartmentCode()
-//				);
+		DepartmentDto savedDepartmentDto = new DepartmentDto(
+				savedDepartment.getId(),
+				savedDepartment.getDepartmentName(),
+				savedDepartment.getDepartmentDescription(),
+				savedDepartment.getDepartmentCode()
+				);
 
 //		DepartmentDto savedDepartmentDto = DepartmentMapper.mapToDepartmentDto(savedDepartment);
 		
 //		DepartmentDto savedDepartmentDto = modelMapper.map(savedDepartment, DepartmentDto.class);
 		
-		DepartmentDto savedDepartmentDto = AutoDepartmentMapper.mapper.mapToDepartmentDto(savedDepartment);
+//		DepartmentDto savedDepartmentDto = AutoDepartmentMapper.mapper.mapToDepartmentDto(savedDepartment);
 		
 		return savedDepartmentDto;
 		
@@ -63,18 +63,18 @@ public class DepartmentServiceImpl implements DepartmentService{
 		Department department = departmentRepository.findByDepartmentCode(departmentCode);
 
 //		Convert JPA Entity to department Dto
-//		DepartmentDto departmentDto = new DepartmentDto(
-//				department.getId(),
-//				department.getDepartmentName(),
-//				department.getDepartmentDescription(),
-//				department.getDepartmentCode()
-//				);
-//		return departmentDto;
+		DepartmentDto departmentDto = new DepartmentDto(
+				department.getId(),
+				department.getDepartmentName(),
+				department.getDepartmentDescription(),
+				department.getDepartmentCode()
+				);
+		return departmentDto;
 		
 //		return DepartmentMapper.mapToDepartmentDto(department);
 		
 //		return modelMapper.map(department, DepartmentDto.class);
 		
-		return AutoDepartmentMapper.mapper.mapToDepartmentDto(department);
+//		return AutoDepartmentMapper.mapper.mapToDepartmentDto(department);
 	}
 }

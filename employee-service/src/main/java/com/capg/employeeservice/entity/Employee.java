@@ -30,4 +30,6 @@ public class Employee {
 	//makes this column as a not null and unique
 	@Column(nullable = false, unique = true)
 	private String email;
+	
+	private String departmentCode;
 }
