@@ -14,6 +14,7 @@ import com.capg.employeeservice.entity.Employee;
 import com.capg.employeeservice.mapper.AutoEmployeeMapper;
 import com.capg.employeeservice.mapper.EmployeeMapper;
 import com.capg.employeeservice.repository.EmployeeRepository;
+import com.capg.employeeservice.services.APIClient;
 import com.capg.employeeservice.services.EmployeeService;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 //	private RestTemplate restTemplate;
 	
-	private WebClient webClient;
+//	private WebClient webClient;
+	
+	private APIClient apiClient;
 	
 	@Override
 	public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
@@ -76,11 +79,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 //	DepartmentDto departmentDto = responseEntity.getBody();
 	
 		
-	DepartmentDto departmentDto = webClient.get()
-			.uri("http://localhost:8080/api/department/"+ employee.getDepartmentCode())
-			.retrieve()
-			.bodyToMono(DepartmentDto.class)
-			.block();
+//	DepartmentDto departmentDto = webClient.get()
+//			.uri("http://localhost:8080/api/department/"+ employee.getDepartmentCode())
+//			.retrieve()
+//			.bodyToMono(DepartmentDto.class)
+//			.block();
+		
+	DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 	
 		//convert JPA Entity to Dto
 		EmployeeDto employeeDto = new EmployeeDto(

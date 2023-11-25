@@ -16,7 +16,7 @@ import com.capg.employeeservice.services.EmployeeService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("api/employees")
 @AllArgsConstructor
 public class EmployeeController {
 
