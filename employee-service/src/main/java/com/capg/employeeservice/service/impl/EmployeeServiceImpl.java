@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.capg.employeeservice.dto.APIResponseDto;
 import com.capg.employeeservice.dto.DepartmentDto;
 import com.capg.employeeservice.dto.EmployeeDto;
+import com.capg.employeeservice.dto.OrganizationDto;
 import com.capg.employeeservice.entity.Employee;
 import com.capg.employeeservice.mapper.AutoEmployeeMapper;
 import com.capg.employeeservice.mapper.EmployeeMapper;
@@ -92,6 +93,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		DepartmentDto departmentDto = webClient.get()
 				.uri("http://localhost:8080/api/department/" + employee.getDepartmentCode()).retrieve()
 				.bodyToMono(DepartmentDto.class).block();
+		
+		OrganizationDto organizationDto = webClient.get()
+				.uri("http://localhost:8083/api/organizations/" + employee.getOrganizationCode()).retrieve()
+				.bodyToMono(OrganizationDto.class).block();
 
 //	DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
@@ -104,7 +109,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		APIResponseDto apiResponseDto = new APIResponseDto();
 		apiResponseDto.setEmployee(employeeDto);
 		apiResponseDto.setDepartment(departmentDto);
-
+		apiResponseDto.setOrganization(organizationDto);
 		return apiResponseDto;
 
 //		return EmployeeMapper.mapToEmployeeDto(employee);
