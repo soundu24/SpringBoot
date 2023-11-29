@@ -1,12 +1,13 @@
 package com.capg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import static org.mockito.Mockito.verify;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,43 +28,33 @@ public class StudentServiceTest {
 
     @Test
     public void testGetAllStudents() {
-        // Mocking repository response
         List<Student> students = new ArrayList<>();
-        students.add(new Student(25, "John", 50000));
-        students.add(new Student(22, "Alice", 60000));
+        students.add(new Student(23, "Kavya", 50000));
+        students.add(new Student(22, "Pushpa", 60000));
 
         when(studentRepo.findAll()).thenReturn(students);
 
-        // Test the service method
         List<Student> result = studentService.getAllStudents();
-
-        // Verify the result
         assertEquals(students.size(), result.size());
     }
 
     @Test
     public void testUpdate() {
-        // Mocking repository response
-        Student studentToUpdate = new Student(25, "John", 50000);
+        Student studentToUpdate = new Student(23, "Kavya", 50000);
         when(studentRepo.save(studentToUpdate)).thenReturn(studentToUpdate);
-
-        // Test the service method
         studentService.update(studentToUpdate);
 
         // Verify that the save method in the repository was called
     }
 
-//    @Test
-//    public void testDelete() {
-//        // Mocking repository response
-//        String studentNameToDelete = "Alice";
-//        when(studentRepo.deleteByName(studentNameToDelete)).thenReturn(Optional.of(new Student()));
-//
-//        // Test the service method
-//        studentService.delete(studentNameToDelete);
-//
-//        // Verify that the delete method in the repository was called
-//    }
+    @Test
+    public void testDelete() {
+    	Student studentNameToDelete = new Student(23, "Kavya", 50000);
+    	String name = "Kavya";
+    	studentRepo.deleteByName(name);
+    	verify(studentRepo,times(1)).deleteByName(name);
+        
+    }
 
     @Test
     public void testSave() {
@@ -71,14 +62,10 @@ public class StudentServiceTest {
         Student studentToSave = new Student(28, "Bob", 70000);
         when(studentRepo.save(studentToSave)).thenReturn(studentToSave);
 
-        // Test the service method
         Student result = studentService.save(studentToSave);
 
-        // Verify the result
         assertEquals(studentToSave, result);
     }
-
-    // Add more tests as needed for other service methods
 
 }
 

@@ -22,11 +22,11 @@ public class StudentRepositoryTest {
     @Test
     public void testSaveAndFindByName() {
 
-        Student student = new Student(25, "John", 50000);
+        Student student = new Student(25, "Soundarya", 50000);
 
         Student savedStudent = studentRepo.save(student);
 
-        Student foundStudent = studentRepo.findByName("John");
+        Student foundStudent = studentRepo.findByName("Soundarya");
 
         assertNotNull(foundStudent);
         assertEquals(savedStudent.getName(), foundStudent.getName());
